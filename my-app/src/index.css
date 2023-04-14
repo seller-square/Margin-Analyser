@@ -1,5 +1,6 @@
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 
+/*main body CSS */
 
 body {
   margin: 0;
@@ -14,6 +15,9 @@ body {
 code {
   font-family: Montserrat;
 }
+
+/*main fields CSS */
+
 form {
   display: flex;
   flex-direction: column;
@@ -44,6 +48,8 @@ button {
 button:hover {
   background-color: #9ce2c4;
 }
+
+/* header CSS */
 img{
   margin-left: 10vh;
   width: 7vh;
@@ -112,6 +118,8 @@ img{
 .cta:hover {
   background-color: #444;
 }
+
+/* form  CSS */
 form {
   display: flex;
   flex-direction: column;
@@ -121,6 +129,8 @@ form {
 
 .form-group {
   margin-bottom: 20px;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .form-group label {
@@ -156,101 +166,6 @@ form {
   margin-top: 1.5rem;
 }
 
-.lineOne{
-  width: 21.5rem;
-  margin-left: 2rem;
-}
-.lineTwo{
-  width: 18.2rem;
-  margin-left: 2rem;
-}
-#gstValues{
-  width: 19.8rem;
-  border-radius: 15px;
-  height: 2.5rem;
-  margin-top: 3px;
-}
-.lineThree{
-  width: 11.4rem;
-  margin-left: 1.2rem;
-  font-size: 14px;
-}
-#measurementDimensions{
-  width: 5rem;
-  border-radius: 15px;
-  margin-left: 1.2rem;
-}
-.lineFour{
-  width: 22.1rem;
-  margin-left: 2rem; 
-  border-radius: 15px;
-  border-color: #646464;
-  color: #585859;
-  font-size: 14px;
-  height: 1.2rem;
-}
-#percentOrValue{
-  width: 5rem;
-  border-radius: 15px;
-  margin-left: 1.2rem;
-}
-#weightDimensions{
-  height: 2.5rem;
-  margin-top: 3px;
-}
-.lineFive{
-  width: 22.8rem;
-  margin-left: 2.2rem; 
-  border-radius: 15px;
-  height: 2.5rem; 
-  margin-bottom: 1rem;
-    border-color: #646464;
-  color: #585859;
-  font-size: 14pxrem;
-}
-.addShipping{
-  font-size: 1rem;
-  margin-left: 2rem;
-}
-.lineSix{
-  width: 13.5rem;
-  margin-left: 1.2rem;
-  margin-top: -1rem;
-}
-.lineSeven{
-  margin-left: 1rem;
-  width: 5rem;
-  height: 1rem;
-  border-color: #646464;
-  color: #585859;
-  font-size: 14px;
-}
-
-.shipmentOptions{
-  margin-left: 1rem;
-  width: 4rem;
-  height: 2.5rem;
-}
-.Shipping{
-  margin-left: -21.8rem;
-}
-.addShipping{
-  margin-top: 1rem;
-}
-
-.line option{
-  margin-left: 2rem;
-}
-.submitButton{
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  border-radius: 10px;
-}
-input::placeholder{
- font-size: 1rem;
- font-style: monserrat;
-}
-
 /* Set font family and font size for placeholder */
 input::placeholder {
   font-family: 'Montserrat', sans-serif;
@@ -270,14 +185,131 @@ select {
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
 }
-.label{
+
+/* button */
+.submitButton{
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  border-radius: 10px;
+}
+input::placeholder{
+ font-size: 1rem;
+ font-style: monserrat;
+}
+
+/* form fields CSS */
+/* Line 1 CSS (SP and CP)*/
+
+.lineOne{
+  width: 21.5rem;
+  margin-left: 2.3rem;
+}
+
+/* line two CSS (GST discount percent box)*/
+.lineTwo{
+  width: 18.2rem;
+  margin-left: 2.3rem;
+}
+#gstValues{
+  width: 19.8rem;
+  border-radius: 15px;
+  height: 2.5rem;
+  margin-top: 3px;
+}
+#percentOrValue{
+  width: 5rem;
+  border-radius: 15px;
+  margin-left: 1.2rem;
+}
+/* line three CSS (lbh and cm/inch) */
+
+.lineThree{
+  width: 11.1rem;
+  margin-left: 2.2rem;
+  font-size: 14px;
+}
+#measurementDimensions{
+  width: 5rem;
+  border-radius: 15px;
+  margin-left: 1.2rem;
+}
+
+/*line four CSS weight and kg/g */
+.lineFour{
+  width: 22.1rem;
+  margin-left: 2.2rem; 
+  border-radius: 15px;
+  border-color: #646464;
+  color: #585859;
+  font-size: 14px;
+  height: 1.2rem;
+}
+
+#weightDimensions{
+  height: 2.5rem;
+  margin-top: 3px;
+}
+
+/* line five(category and tier) */
+.lineFive{
+  width: 22.8rem;
+  margin-left: 2.2rem; 
+  border-radius: 15px;
+  height: 2.5rem; 
+  margin-bottom: 1rem;
+    border-color: #646464;
+  color: #585859;
+  font-size: 14pxrem;
+}
+/*line six (add shipping local national regional)*/
+.addShipping{
+  font-size: 1rem;
+  margin-left: 3rem;
+}
+.lineSix{
+  width: 14rem;
+  margin-left: 0.8rem;
+  margin-top: -1rem;
+}
+.label2{
+  margin-top: 1rem;
+  margin-left: 0.2rem;
+}
+.additionalShippingCost{
+  margin-left: 1.7rem;
+}
+
+/*line seven shipment options */
+.lineSeven{
+  margin-left: 1rem;
+  width: 6rem;
+  height: 1rem;
+  border-color: #646464;
+  color: #585859;
+  font-size: 14px;
+}
+
+.shipmentOptions{
+  margin-left: -2rem;
+  width: 2rem;
+  height: 2.5rem;
+}
+.Shipping{
+  margin-left: -21.8rem;
+}
+.addShipping{
   margin-top: 1rem;
 }
+
+.line option{
+  margin-left: 2rem;
+}
+/* table CSS */
 
 .tableTwo {
   width: 50%;
   border: 1px solid #B9B9B9;
-  border-collapse: collapse;
+border-radius: 14px;
   margin: 0 auto;
   margin-top: 2rem;
   margin-bottom: 3rem;
@@ -291,18 +323,22 @@ select {
 .tableTwoRow1 {
   background-color: #EDDCF1;
   color: #fff;
+  border-radius: 14px;
 }
 
 .tableTwoRow2 {
   background-color: #D4AFFA;
+  border-radius: 14px;
 }
 
 .tableTwoRow3 {
   background-color: #EDDCF1;
+  border-radius: 14px;
 }
 
 .tableTwoRow4 {
   background-color: #DEC0F0;
+  border-radius: 14px;
 }
 
 .tableTwo th,

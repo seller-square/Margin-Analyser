@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './index.css';
-
+import './index.css';  
 
 function App() {
   const [showAdditionalShippingCost, setShowAdditionalShippingCost] = useState(false);
@@ -45,15 +44,19 @@ function App() {
       regionalShippingCost: formValues.regionalShippingCost,
       nationalShippingCost: formValues.nationalShippingCost
     };
-
     if(formValues.weightDimensions==="kg"){
-      payload.packingWeight = (formValues.packingWeight*1000).toString()
-    }
-  
+        payload.packingWeight = (formValues.packingWeight*1000).toString();
+      }
+    if(formValues.percentOrValue==="percent"){
+        payload.discount = (formValues.discount/100).toString();
+      }
+    if(formValues.measurementDimensions==="inch"){
+        payload.length = (formValues.length*2.54).toString();
+        payload.breadth = (formValues.breadth*2.54).toString();
+        payload.height = (formValues.height*2.54).toString();
+      }
 
-  if (formValues.percentOrValue === "%") {
-      payload.discount = (formValues.sellingPrice * formValues.discount) / 100;
-    }
+
     try {
       const response = await fetch(`https://marginanalyse.azurewebsites.net/api/marginv1?costPrice=${payload.costPrice}&sellingPrice=${payload.sellingPrice}&gstRate=${payload.gstRate}&discount=${payload.discount}&length=${payload.length}&breadth=${payload.breadth}&height=${payload.height}&packingWeight=${payload.packingWeight}&categoryUnit=${payload.categoryUnit}&tierUnit=${payload.tierUnit}&shippingOption=${payload.shippingOption}&localShippingCost=${payload.localShippingCost}&regionalShippingCost=${payload.regionalShippingCost}&nationalShippingCost=${payload.nationalShippingCost}`, {
         method: 'POST',
@@ -70,7 +73,6 @@ function App() {
       const data = await response.json(); // Parse the JSON response
       console.log(data);
       formData = data; 
-       console.log(data.Nett_Settlment_Local)                   // Log the JSON response
     } catch (error) {
       console.log(error);
     }
@@ -83,12 +85,13 @@ function App() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-  
-            setFormValues({
-            ...formValues,
-            [name]: value,
-          });
-  
+   
+      setFormValues({
+        ...formValues,
+        [name]: value,
+      });
+    
+
     if (name === "shippingOption") {
       setShowAdditionalShippingCost(value === "Easy Ship");
     }
@@ -112,7 +115,7 @@ function App() {
         </select>
         <input className='lineTwo' type="text" id="discount" name="discount" value={formValues.discount} placeholder="Discount" onChange={handleChange} />
         <select className='lineTwo' id="percentOrValue" name="percentOrValue" value={formValues.percentOrValue} onChange={handleChange}>
-          <option value="%">%</option>
+          <option value="percent">%</option>
           <option value="value">value</option>
         </select>
       </div>
@@ -123,7 +126,7 @@ function App() {
         <select className='lineThree' id='measurementDimensions'
           value={formValues.measurementDimensions}
           onChange={handleChange}
-          name="measuremtnDimensions"
+          name="measurementDimensions"
         >
           <option value="cm">cm</option>
           <option value="inch">inch</option>
@@ -336,12 +339,12 @@ function App() {
           <option value="Musical Instruments - DJ & VJ Equipment, Recording and Computer, Cables & Leads, Microphones, PA & Stage">Musical Instruments - DJ & VJ Equipment, Recording and Computer, Cables & Leads, Microphones, PA & Stage</option>
         </select>
         <select className='lineFive' id="tierUnit" name="tierUnit" value={formValues.tierUnit} onChange={handleChange}>
-          <option value="basic">Basic</option>
-          <option value="standard">Standard</option>
-          <option value="premium">Premium</option>
+          <option value="Basic">Basic</option>
+          <option value="Standard">Standard</option>
+          <option value="Premium">Premium</option>
         </select>
       </div>
-      <div className='label'>
+      <div className='label1'>
         <label className='Shipping'> Select Shipping Options </label>
       </div>
       <div className='formFields'>
@@ -363,7 +366,17 @@ function App() {
             checked={formValues.shippingOption === "Easy Ship"}
             onChange={handleChange}
           />
-          <label className="shipmentOptions" htmlFor='easyship'>Easyship</label>
+          <label className="shipmentOptions" htmlFor='easyship'>Easy Ship</label>
+        </div>
+        <div>
+          <input className='lineSeven'
+            type="radio"
+            name="shippingOption"
+            value="Easy Ship Prime"
+            checked={formValues.shippingOption === "Easy Ship Prime"}
+            onChange={handleChange}
+          />
+          <label className="shipmentOptions" htmlFor='easyship'>Easy Ship Prime</label>
         </div>
         <div>
           <input className='lineSeven'
@@ -388,7 +401,7 @@ function App() {
       </div>
       {showAdditionalShippingCost ? (
         <div id='additionalShippingCost' className='additionalShippingCost'>
-          <div className='label'>
+          <div className='label2'>
             <label className=''> Additional Shipping Costs </label>
           </div>
           <div className='formFields'>
@@ -433,10 +446,10 @@ function App() {
   </thead>
   <tbody>
     <tr className="tableTwoRow2">
-      <td>FINAL SHIPPING PRICE<br/>(Inclusive of additinal shipping charges)</td>
-      <td>{formData.closing_fee_local}</td>
-      <td>{formData.closing_fee_regional}</td>
-      <td>{formData.closing_fee_national}</td>
+      <td>FINAL SELLING PRICE<br/>(Inclusive of additinal shipping charges)</td>
+      <td>{formData.item_selling_price_local}</td>
+      <td>{formData.item_selling_price_regional}</td>
+      <td>{formData.item_selling_price_national}</td>
       </tr>
       </tbody>
       </table>
@@ -486,14 +499,14 @@ function App() {
   <thead className='tableHeader'>
   <tr className="tableTwoRow1">
       <th></th>
-      <th>Profit</th>
-      <th>Margin on Settlement</th>
-      <th>Margin on SP</th>
+      <th>PROFIT</th>
+      <th>MARGIN IN SETTLEMENT</th>
+      <th>MARGIN ON SP</th>
     </tr>
   </thead>
   <tbody>
     <tr className="tableTwoRow2">
-    <td>Average</td>
+    <td>AVERAGE</td>
       <td>{formData.Average_profit}</td>
       <td>{formData.average_margin_on_settlement}</td>
       <td>{formData.Average_margin_on_sp}</td>

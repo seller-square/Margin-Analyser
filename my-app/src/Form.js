@@ -23,7 +23,26 @@ function App() {
     regionalShippingCost: '',
     nationalShippingCost: ''
   });
-
+  const [formErrors, setFormErrors] = useState({
+    costPrice: null,
+    sellingPrice: null,
+    gstRate: null,
+    discount: null,
+    length: null,
+    breadth: null,
+    height: null,
+    measurementDimensions: null,
+    percentOrValue: null,
+    packingWeight: null,
+    weightDimensions: null,
+    categoryUnit: null,
+    tierUnit: null,
+    shippingOption: null,
+    localShippingCost: null,
+    regionalShippingCost: null,
+    nationalShippingCost: null,
+  });
+  
   let [formData, setFormData] = useState({ });
 
   const handleSubmit = async (e) => {
@@ -76,6 +95,7 @@ function App() {
     } catch (error) {
       console.log(error);
     }
+    
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -90,11 +110,12 @@ function App() {
         ...formValues,
         [name]: value,
       });
-    
+  
 
     if (name === "shippingOption") {
       setShowAdditionalShippingCost(value === "Easy Ship");
     }
+    
   };
   
 
@@ -102,49 +123,51 @@ function App() {
     <div>
     <form onSubmit={handleSubmit}>
       <div className='formFields'>
-        <input className='lineOne' type="text" id="costPrice" name="costPrice" value={formValues.costPrice} placeholder="Cost Price" onChange={handleChange} />
-        <input className='lineOne' type="text" id="sellingPrice" name="sellingPrice" value={formValues.sellingPrice} placeholder="Selling Price" onChange={handleChange} />
+        <input className='lineOne' type="text" id="costPrice" name="costPrice" value={formValues.costPrice} placeholder="Cost Price" onChange={handleChange} required/>
+        <input className='lineOne' type="text" id="sellingPrice" name="sellingPrice" value={formValues.sellingPrice} placeholder="Selling Price" onChange={handleChange} required/>
       </div>
       <div className='formFields'>
-        <select className='lineTwo' id="gstValues" name="gstRate" value={formValues.gstRate} onChange={handleChange}>
+        <select className='lineTwo' id="gstValues" name="gstRate" value={formValues.gstRate} onChange={handleChange} required>
           <option value="0.00">0%</option>
           <option value="0.05">5%</option>
           <option value="0.12">12%</option>
           <option value="0.18">18%</option>
           <option value="0.28">28%</option>
         </select>
-        <input className='lineTwo' type="text" id="discount" name="discount" value={formValues.discount} placeholder="Discount" onChange={handleChange} />
-        <select className='lineTwo' id="percentOrValue" name="percentOrValue" value={formValues.percentOrValue} onChange={handleChange}>
+        <input className='lineTwo' type="text" id="discount" name="discount" value={formValues.discount} placeholder="Discount" onChange={handleChange} required/>
+        <select className='lineTwo' id="percentOrValue" name="percentOrValue" value={formValues.percentOrValue} onChange={handleChange} required>
           <option value="percent">%</option>
           <option value="value">value</option>
         </select>
       </div>
       <div className='formFields'>
-        <input className='lineThree' type="number" id="length" name="length" value={formValues.length} placeholder="Length" onChange={handleChange} />
-        <input className='lineThree' type="number" id="breadth" name="breadth" value={formValues.breadth} placeholder="Width" onChange={handleChange} />
-        <input className='lineThree' type="number" id="height" name="height" value={formValues.height} placeholder="Height" onChange={handleChange} />
+        <input className='lineThree' type="number" id="length" name="length" value={formValues.length} placeholder="Length" onChange={handleChange} required />
+        <input className='lineThree' type="number" id="breadth" name="breadth" value={formValues.breadth} placeholder="Width" onChange={handleChange} required />
+        <input className='lineThree' type="number" id="height" name="height" value={formValues.height} placeholder="Height" onChange={handleChange} required/>
         <select className='lineThree' id='measurementDimensions'
           value={formValues.measurementDimensions}
           onChange={handleChange}
           name="measurementDimensions"
+          required
         >
           <option value="cm">cm</option>
           <option value="inch">inch</option>
         </select>
       </div>
       <div className='formFields'>
-        <input className='lineFour' type="number" id="packingWeight" name="packingWeight" value={formValues.packingWeight} placeholder="Packaging Weight" onChange={handleChange} />
+        <input className='lineFour' type="number" id="packingWeight" name="packingWeight" value={formValues.packingWeight} placeholder="Packaging Weight" onChange={handleChange} required />
         <select className='lineFour' id='weightDimensions'
           value={formValues.weightDimension}
           name="weightDimensions"
           onChange={handleChange}
+          required
         >
           <option value="g">g</option>
           <option value="kg">kg</option>
         </select>
       </div>
       <div className='formFields'>
-        <select className='lineFive' id="categoryUnit" name="categoryUnit" value={formValues.categoryUnit} onChange={handleChange}>
+        <select className='lineFive' id="categoryUnit" name="categoryUnit" value={formValues.categoryUnit} onChange={handleChange} required>
           <option value="">Select Product Category</option>
           <option value="Books">Books</option>
           <option value="School Textbook Bundles">School Textbook Bundles</option>
@@ -338,7 +361,7 @@ function App() {
           <option value="Musical Instruments (excluding Guitars and Keyboards)">Musical Instruments (excluding Guitars and Keyboards)</option>
           <option value="Musical Instruments - DJ & VJ Equipment, Recording and Computer, Cables & Leads, Microphones, PA & Stage">Musical Instruments - DJ & VJ Equipment, Recording and Computer, Cables & Leads, Microphones, PA & Stage</option>
         </select>
-        <select className='lineFive' id="tierUnit" name="tierUnit" value={formValues.tierUnit} onChange={handleChange}>
+        <select className='lineFive' id="tierUnit" name="tierUnit" value={formValues.tierUnit} onChange={handleChange} required>
           <option value="Basic">Basic</option>
           <option value="Standard">Standard</option>
           <option value="Premium">Premium</option>
@@ -447,9 +470,9 @@ function App() {
   <tbody>
     <tr className="tableTwoRow2">
       <td>FINAL SELLING PRICE<br/>(Inclusive of additinal shipping charges)</td>
-      <td>{formData.item_selling_price_local}</td>
-      <td>{formData.item_selling_price_regional}</td>
-      <td>{formData.item_selling_price_national}</td>
+      <td><span>&#8377;</span>{formData.item_selling_price_local}</td>
+      <td><span>&#8377;</span>{formData.item_selling_price_regional}</td>
+      <td><span>&#8377;</span>{formData.item_selling_price_national}</td>
       </tr>
       </tbody>
       </table>
@@ -468,29 +491,29 @@ function App() {
   <tbody>
     <tr className="tableTwoRow2">
       <td>LOCAL</td>
-      <td>{formData.item_selling_price_local}</td>
-      <td>{formData.Nett_Settlment_Local}</td>
-      <td>{formData.Profit_local}</td>
-      <td>{formData.Margin_on_sp_local}</td>
-      <td>{formData.margin_on_settlement_local}</td>
+      <td><span>&#8377;</span>{formData.item_selling_price_local}</td>
+      <td><span>&#8377;</span>{formData.Nett_Settlment_Local}</td>
+      <td><span>&#8377;</span>{formData.Profit_local}</td>
+      <td>{formData.Margin_on_sp_local}%</td>
+      <td>{formData.margin_on_settlement_local}%</td>
      
     </tr>
     <tr className="tableTwoRow3">
       <td>REGIONAL</td>
-      <td>{formData.item_selling_price_regional}</td>
-      <td>{formData.Nett_Settlment_Regional}</td>
-      <td>{formData.Profit_regional}</td>
-      <td>{formData.Margin_on_sp_regional}</td>
-      <td>{formData.margin_on_settlement_regional}</td>
+      <td><span>&#8377;</span>{formData.item_selling_price_regional}</td>
+      <td><span>&#8377;</span>{formData.Nett_Settlment_Regional}</td>
+      <td><span>&#8377;</span>{formData.Profit_regional}</td>
+      <td>{formData.Margin_on_sp_regional}%</td>
+      <td>{formData.margin_on_settlement_regional}%</td>
       
     </tr>
     <tr className="tableTwoRow4">
       <td>NATIONAL</td>
-      <td>{formData.item_selling_price_national}</td>
-      <td>{formData.Nett_Settlment_National}</td>
-      <td>{formData.Profit_national}</td>
-      <td>{formData.Margin_on_sp_national}</td>
-      <td>{formData.margin_on_settlement_national}</td>
+      <td><span>&#8377;</span>{formData.item_selling_price_national}</td>
+      <td><span>&#8377;</span>{formData.Nett_Settlment_National}</td>
+      <td><span>&#8377;</span>{formData.Profit_national}</td>
+      <td>{formData.Margin_on_sp_national}%</td>
+      <td>{formData.margin_on_settlement_national}%</td>
     </tr>
   </tbody>
 </table>
@@ -507,9 +530,9 @@ function App() {
   <tbody>
     <tr className="tableTwoRow2">
     <td>AVERAGE</td>
-      <td>{formData.Average_profit}</td>
-      <td>{formData.average_margin_on_settlement}</td>
-      <td>{formData.Average_margin_on_sp}</td>
+      <td><span>&#8377;</span>{formData.Average_profit}</td>
+      <td>{formData.average_margin_on_settlement}%</td>
+      <td>{formData.Average_margin_on_sp}%</td>
       </tr>
       </tbody>
       </table>

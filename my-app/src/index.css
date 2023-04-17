@@ -306,12 +306,12 @@ input::placeholder{
 }
 /* table CSS */table {
   border-collapse: collapse;
-  width: 70%;
+  width: 52%;
   margin-top: 2rem;
   margin-bottom: 2rem;
   align-items: center;
-  margin-left: 15%;
-  margin-right: 15%;
+  margin-left: 25%;
+  margin-right: 25%;
 }
 
 table.rounded {

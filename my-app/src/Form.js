@@ -530,7 +530,7 @@ function App() {
   <tr className="tableTwoRow1">
       <th></th>
       <th>PROFIT</th>
-      <th>MARGIN IN SETTLEMENT</th>
+      <th>MARGIN ON SETTLEMENT</th>
       <th>MARGIN ON SP</th>
     </tr>
   </thead>

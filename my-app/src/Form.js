@@ -66,8 +66,10 @@ function App() {
     if(formValues.weightDimensions==="kg"){
         payload.packingWeight = (formValues.packingWeight*1000).toString();
       }
-    if(formValues.percentOrValue==="percent"){
-        payload.discount = (formValues.discount/100).toString();
+    
+      // discount conversion 
+    if(formValues.percentOrValue==="value"){
+        payload.discount = (formValues.sellingPrice*formValues.discount/100).toString();
       }
     if(formValues.measurementDimensions==="inch"){
         payload.length = (formValues.length*2.54).toString();
@@ -135,9 +137,14 @@ function App() {
           <option value="0.28">28%</option>
         </select>
         <input className='lineTwo' type="text" id="discount" name="discount" value={formValues.discount} placeholder="Discount" onChange={handleChange} required/>
-        <select className='lineTwo' id="percentOrValue" name="percentOrValue" value={formValues.percentOrValue} onChange={handleChange} required>
-          <option value="percent">%</option>
-          <option value="value">value</option>
+        <select className='lineTwo' id='percentOrValue'
+          value={formValues.percentOrValue}
+          onChange={handleChange}
+          name="percentOrValue"
+          required
+        >
+          <option value="absoulteValue">value</option>
+          <option value="percentValue">%</option>
         </select>
       </div>
       <div className='formFields'>
@@ -379,7 +386,7 @@ function App() {
             checked={formValues.shippingOption === "Self Ship"}
             onChange={handleChange}
           />
-          <label htmlFor="self-ship">Self ship</label>
+          <label htmlFor="Self Ship">Self ship</label>
         </div>
         <div>
           <input className='lineSeven'

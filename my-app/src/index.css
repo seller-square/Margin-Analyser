@@ -29,24 +29,44 @@ input {
   padding: 10px;
   margin-top: 5px;
   border: 1px solid gray;
-  border-radius: 15px;
   font-size: 16px;
-  width: 50vh;
+  font-size: 14px; 
+  background: #F3F4F6FF; 
+  
 }
 
-button {
-  background-color: #6AC489;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  margin-top: 20px;
-  font-size: 16px;
-  cursor: pointer;
+/* Button 1 */
+.button {
+  position: absolute; 
+  top: 334px; 
+  left: 586px; 
+  height: 52px; 
+  padding: 0 20px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-family: Inter; /* Body */
+  font-size: 18px; 
+  line-height: 28px; 
+  color: #FFFFFFFF; /* white */
+  background: #00BDD6FF; /* primary-500 */
+  opacity: 1; 
+  border: none; 
+  border-radius: 6px; /* border-l */
 }
-
-button:hover {
-  background-color: #9ce2c4;
+/* Hover */
+.button:hover {
+  color: #FFFFFFFF; /* white */
+  background: #00A9C0FF; /* primary-550 */
+}
+/* Pressed */
+.button:hover:active {
+  color: #FFFFFFFF; /* white */
+  background: #0095A9FF; /* primary-600 */
+}
+/* Disabled */
+.button:disabled {
+  opacity: 0.4; 
 }
 
 /* header CSS */
@@ -109,7 +129,6 @@ img{
   color: #fff;
   padding: 0.5rem 1rem;
   border: none;
-  border-radius: 0.5rem;
   font-size: 1.2rem;
   cursor: pointer;
   margin-top: 0.5rem;
@@ -143,7 +162,6 @@ form {
 .form-group select {
   padding: 8px;
   border: 1px solid #ccc;
-  border-radius: 4px;
   font-size: 16px;
 }
 
@@ -151,21 +169,24 @@ form {
   width: 100%;
 }
 
-.form-group label.boxed {
-  display: inline-block;
-  background-color: #eee;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-weight: bold;
-  margin-right: 10px;
-  margin-bottom: 5px;
-}
+
 
 .formFields{
   display: flex;
-  margin-top: 1.5rem;
-}
 
+  }
+
+.Rhs{
+margin-left: 10px; 
+}
+.productDetails{
+  margin-left: 400px;
+  margin-bottom: 20px;
+   font-family: Epilogue; /* Heading */
+  font-size: 32px; 
+  line-height: 48px; 
+  color: #171A1FFF; /* neutral-900 */
+}
 /* Set font family and font size for placeholder */
 input::placeholder {
   font-family: 'Montserrat', sans-serif;
@@ -188,107 +209,195 @@ select {
 
 /* button */
 .submitButton{
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  border-radius: 10px;
+ /* Button 1 */
+    top: 334px; 
+  left: 586px; 
+  height: 52px; 
+  margin-top: 20px;
+  padding: 0 20px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-family: Inter; /* Body */
+  font-size: 18px; 
+  line-height: 28px; 
+  color: #FFFFFFFF; /* white */
+  background: #00BDD6FF; /* primary-500 */
+  opacity: 1; 
+  border: none; 
+  border-radius: 6px; /* border-l */
 }
+/* Hover */
+.button:hover {
+  color: #FFFFFFFF; /* white */
+  background: #00A9C0FF; /* primary-550 */
+}
+/* Pressed */
+.button:hover:active {
+  color: #FFFFFFFF; /* white */
+  background: #0095A9FF; /* primary-600 */
+}
+/* Disabled */
+.button:disabled {
+  opacity: 0.4; 
+}
+
 input::placeholder{
  font-size: 1rem;
  font-style: monserrat;
 }
+.inputLabels{
+   font-family: Epilogue; /* Heading */
+  font-size: 20px; 
+  line-height: 30px; 
+  color: #565E6CFF; /* neutral-600 */
+}
 
+.sidep{
+  
+  font-family: Inter; 
+  font-size: 14px; 
+  line-height: 22px;
+  margin-top: -5px;
+  color: #171A1FFF; 
+}
 /* form fields CSS */
 /* Line 1 CSS (SP and CP)*/
 
 .lineOne{
-  width: 21.5rem;
-  margin-left: 2.3rem;
-}
+  width: 391px; 
+  height: 25px; 
+  margin-left: 50px;
+  margin-bottom: 30px;
+  }
 
 /* line two CSS (GST discount percent box)*/
 .lineTwo{
-  width: 18.2rem;
-  margin-left: 2.3rem;
-}
+  width: 391px; 
+  height: 25px; 
+  margin-left: 33px;
+  margin-bottom: 15px;
+  
+  }
 #gstValues{
-  width: 19.8rem;
-  border-radius: 15px;
-  height: 2.5rem;
-  margin-top: 3px;
+  width: 413px; 
+  height: 47px; 
+   margin-left: 95px;
+   margin-bottom: 30px;
+   font-size: 14px; 
+   background: #F3F4F6FF; 
+
 }
 #percentOrValue{
-  width: 5rem;
-  border-radius: 15px;
-  margin-left: 1.2rem;
+  width: 67px;
+  height: 47px;
+  margin-right: 55px;
+  margin-left: px;
+  margin-bottom: 30px;
+  font-size: 14px; 
+  background: #F3F4F6FF; 
 }
 /* line three CSS (lbh and cm/inch) */
 
 .lineThree{
-  width: 11.1rem;
-  margin-left: 2.2rem;
-  font-size: 14px;
+  position: inherit;
+  width: 300px; 
+  height: 25px; 
+  margin-left: -30px;
+  margin-right: 10px;
 }
 #measurementDimensions{
-  width: 5rem;
-  border-radius: 15px;
-  margin-left: 1.2rem;
+  width: 70px; 
+  height: 50px; 
+  margin-left: 69px;
+  font-size: 14px; 
+  background: #F3F4F6FF; 
+  
 }
 
 /*line four CSS weight and kg/g */
 .lineFour{
-  width: 22.1rem;
-  margin-left: 2.2rem; 
-  border-radius: 15px;
-  border-color: #646464;
-  color: #585859;
-  font-size: 14px;
-  height: 1.2rem;
+  width: 72px; 
+  height: 25px; 
+  margin-right: 10px;
+  margin-bottom: 30px;
 }
 
 #weightDimensions{
-  height: 2.5rem;
-  margin-top: 3px;
+  width: 67px;
+  height: 47px;
+  margin-right: 62px;
+  margin-left: 70px;
+  font-size: 14px; 
+  background: #F3F4F6FF; 
 }
 
 /* line five(category and tier) */
 .lineFive{
   width: 22.8rem;
   margin-left: 2.2rem; 
-  border-radius: 15px;
   height: 2.5rem; 
   margin-bottom: 1rem;
-    border-color: #646464;
-  color: #585859;
-  font-size: 14pxrem;
+  border-color: #646464;
+    font-size: 14px;
+  margin-bottom: 15px;
 }
 /*line six (add shipping local national regional)*/
-.addShipping{
-  font-size: 1rem;
-  margin-left: 3rem;
+
+.line{
+  display: flex;
 }
-.lineSix{
-  width: 14rem;
-  margin-left: 0.8rem;
-  margin-top: -1rem;
-}
-.label2{
-  margin-top: 1rem;
-  margin-left: 0.2rem;
-}
-.additionalShippingCost{
-  margin-left: 1.7rem;
-}
+
+
 
 /*line seven shipment options */
 .lineSeven{
-  margin-left: 1rem;
-  width: 6rem;
-  height: 1rem;
-  border-color: #646464;
-  color: #585859;
-  font-size: 14px;
+  width: 411px; 
+  height: 45px; 
+  margin-left: 17px;
+  margin-bottom: 30px;
+  font-size: 14px; 
+  background: #F3F4F6FF; 
+}
+#category{
+  margin-left: -10px;
+  margin-bottom: 30px;
+  
+}
+.lineEight{
+  width: 411px; 
+  height: 45px; 
+  margin-left: 69px;
+  margin-bottom: 15px;
+  font-size: 14px; 
+  background: #F3F4F6FF; 
+}
+.radio{
+  display: flex;
+  margin-left: 80px;
 }
 
+.lineNine{
+  height: 12px;
+  width: 50px;
+  margin-left: 40px;
+  margin-right: 20px;
+}
+.lineTen{
+  width: 100px; 
+  height: 25px; 
+  margin-left: 30px;
+}
+#add{
+  font-family: Epilogue; /* Heading */
+  font-size: 20px; 
+  line-height: 30px; 
+  color: #565E6CFF; /* neutral-600 */
+  margin-right: 50px;
+}
+.area{
+  margin-top: -20px;
+ }
 .shipmentOptions{
   margin-left: -2rem;
   width: 2rem;
@@ -304,74 +413,92 @@ input::placeholder{
 .line option{
   margin-left: 2rem;
 }
-/* table CSS */table {
+/* table CSS */
+table {
   border-collapse: collapse;
   width: 52%;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  align-items: center;
+  align-items: left;
   margin-left: 25%;
   margin-right: 25%;
 }
 
-table.rounded {
+table {
   border: 2px solid #ddd;
-  border-radius: 20px;
-  overflow: hidden;
+    overflow: hidden;
 }
 
-table.rounded th,
-table.rounded td {
+table th,
+table td {
   padding: 10px;
   text-align: center;
   border: 1px solid #ddd;
 }
 
-table.rounded th {
+table th {
   background-color: #f2f2f2;
 }
 
-table.rounded tbody tr:nth-child(odd) {
+table tbody tr:nth-child(odd) {
   background-color: #f9f9f9;
 }
 
-table.rounded tbody tr:hover {
+table tbody tr:hover {
   background-color: #f5f5f5;
 }
 
 
-.tableTwoRow1 {
-  background-color: #EDDCF1 !important;
-  color: #fff;
-  border-radius: 14px;
+
+
+.formFields .line {
+  display: flex;
+   align-items: flex-end;
 }
 
-.tableTwoRow2 {
-  background-color: #D4AFFA !important;
-  border-radius: 14px;
+.formFields .line label.area {
+  text-align: right;
+  margin-top: 10px;
+}
+.titles{
+  display: flex ;
+  margin-left: 220px;
+  margin-bottom: -35px;
+}
+.national{
+  margin-top: -100px;
+  margin-left: 30px;
+}
+.para{
+  margin-left: 100px;
+margin-top: 60px;
+margin-bottom: 30px;
+}
+#a,#b,#c{
+  margin-right: 80px;
+}
+#d{
+  margin-right: 110px;
+}
+#e{
+  margin-right: 40px;
+  font-size: 20px; 
+  line-height: 30px; 
+  color: #565E6CFF; 
+}
+#f{
+  margin-right: 70px;
+}
+#g{
+  margin-right: px;
+}
+#category{
+  margin-right: 70px;
 }
 
-.tableTwoRow3 {
-  background-color: #EDDCF1 !important;
-  border-radius: 14px;
+.addtionalShippingCost{
+  margin-top: 30px;
 }
-
-.tableTwoRow4 {
-  background-color: #DEC0F0 !important;
-  border-radius: 14px;
-}
-
-.tableTwo th,
-.tableTwo td {
-  text-align: center;
-  padding: 10px;
-  font-family: 'Montserrat', sans-serif;
-  border: 1px solid #B9B9B9;
-  color: #000000;
-  font-style: normal;
-}
-
-.tableWrapper {
-  border-radius: 20px;
-  overflow: hidden;
+.hidden{
+  display: flex;
 }
